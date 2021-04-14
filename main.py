@@ -15,9 +15,8 @@ garage = CarManager()
 screen.listen()
 screen.onkey(my_turt.go_turtle_go, 'Up')
 
-
-
 game_is_on = True
+
 while game_is_on:
     time.sleep(STARTING_SPEED)
     screen.update()
@@ -26,12 +25,10 @@ while game_is_on:
 
     for car in garage.all_cars:
         if my_turt.distance(car) <= 20:
-            print('MY TURT IS HURT!')
             score.game_over()
             game_is_on = False
 
-    if my_turt.ycor() >= 280:
-        my_turt.back_to_start()
+    if my_turt.is_at_finish_line():
         score.add_point()
         STARTING_SPEED *= 0.9
         # garage.increase_speed()

@@ -10,11 +10,12 @@ class CarManager(Turtle):
         super().__init__()
         self.hideturtle()
         self.all_cars = []
+        self.car_speed = STARTING_MOVE_DISTANCE
         self.new_car()
 
     def drive_cars(self):
         for car in self.all_cars:
-            car.backward(STARTING_MOVE_DISTANCE)
+            car.backward(self.car_speed)
 
     def new_car(self):
         random_chance = random.randint(1, 6)
@@ -27,5 +28,8 @@ class CarManager(Turtle):
             self.all_cars.append(car)
 
     def increase_speed(self):
-        global STARTING_MOVE_DISTANCE
-        STARTING_MOVE_DISTANCE += MOVE_INCREMENT
+        """
+        Increases the speed of the cars, but does not effect the frequency of dispatch.
+        :return:
+        """
+        self.car_speed += MOVE_INCREMENT
