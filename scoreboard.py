@@ -25,3 +25,11 @@ class Scoreboard(Turtle):
         self.clear()
         self.points = 0
         self.update_score()
+
+    def game_over(self):
+        self.reset_score()
+        self.goto(0, 0)
+        self.write("GAME OVER", align="center", font=("Courier", 48, "normal"))
+        self.goto(0, -50)
+        self.write("Your turt is hurt :[", align="center", font=FONT)
+
