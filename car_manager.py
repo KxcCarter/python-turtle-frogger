@@ -8,14 +8,19 @@ MOVE_INCREMENT = 10
 class CarManager(Turtle):
     def __init__(self):
         super().__init__()
-        self.shape('square')
-        self.color(random.choice(COLORS))
-        self.shapesize(stretch_len=3, stretch_wid=1)
-        self.penup()
-        self.goto(300, random.randrange(-240, 240, 30))
+        self.hideturtle()
+        self.all_cars = []
+        self.new_car()
 
-    def drive(self):
-        new_x = self.xcor() - STARTING_MOVE_DISTANCE
-        self.goto(new_x, self.ycor())
+    def drive_cars(self):
+        for car in self.all_cars:
+            new_x = car.xcor() - STARTING_MOVE_DISTANCE
+            car.goto(new_x, car.ycor())
 
-
+    def new_car(self):
+        car = Turtle('square')
+        car.penup()
+        car.color(random.choice(COLORS))
+        car.shapesize(stretch_len=2, stretch_wid=1)
+        car.goto(300, random.randrange(-250, 250, 30))
+        self.all_cars.append(car)

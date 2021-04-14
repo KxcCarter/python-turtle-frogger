@@ -10,25 +10,28 @@ screen.tracer(0)
 
 score = Scoreboard()
 my_turt = Player()
+garage = CarManager()
 
 screen.listen()
 screen.onkey(my_turt.go_turtle_go, 'Up')
 
-all_cars = []
-
-for each in range(1, 15):
-    broom_broom = CarManager()
-    all_cars.append(broom_broom)
 
 
 game_is_on = True
 while game_is_on:
     time.sleep(0.1)
     screen.update()
-    for car in all_cars:
-        car.drive()
+    garage.new_car()
+    garage.drive_cars()
+
+    # for car in garage.all_cars:
+    #     car.drive()
+    #     if my_turt.distance(car) <= 20:
+    #         print('MY TURT IS HURT!')
+    #         game_is_on = False
     if my_turt.ycor() >= 280:
         my_turt.back_to_start()
         score.add_point()
+
 
 screen.exitonclick()
