@@ -24,14 +24,15 @@ while game_is_on:
     garage.new_car()
     garage.drive_cars()
 
-    # for car in garage.all_cars:
-    #     car.drive()
-    #     if my_turt.distance(car) <= 20:
-    #         print('MY TURT IS HURT!')
-    #         game_is_on = False
+    for car in garage.all_cars:
+        if my_turt.distance(car) <= 20:
+            print('MY TURT IS HURT!')
+            game_is_on = False
+
     if my_turt.ycor() >= 280:
         my_turt.back_to_start()
         score.add_point()
+        garage.increase_speed()
 
 
 screen.exitonclick()

@@ -14,13 +14,18 @@ class CarManager(Turtle):
 
     def drive_cars(self):
         for car in self.all_cars:
-            new_x = car.xcor() - STARTING_MOVE_DISTANCE
-            car.goto(new_x, car.ycor())
+            car.backward(STARTING_MOVE_DISTANCE)
 
     def new_car(self):
-        car = Turtle('square')
-        car.penup()
-        car.color(random.choice(COLORS))
-        car.shapesize(stretch_len=2, stretch_wid=1)
-        car.goto(300, random.randrange(-250, 250, 30))
-        self.all_cars.append(car)
+        random_chance = random.randint(1, 6)
+        if random_chance == 1:
+            car = Turtle('square')
+            car.penup()
+            car.color(random.choice(COLORS))
+            car.shapesize(stretch_len=2, stretch_wid=1)
+            car.goto(300, random.randrange(-250, 250, 30))
+            self.all_cars.append(car)
+
+    def increase_speed(self):
+        global STARTING_MOVE_DISTANCE
+        STARTING_MOVE_DISTANCE += MOVE_INCREMENT
