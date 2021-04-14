@@ -19,3 +19,4 @@ class Player(Turtle):
 
     def back_to_start(self):
         self.goto(STARTING_POSITION)
+

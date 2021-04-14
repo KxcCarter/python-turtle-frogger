@@ -8,6 +8,7 @@ screen = Screen()
 screen.setup(width=600, height=600)
 screen.tracer(0)
 
+score = Scoreboard()
 my_turt = Player()
 
 screen.listen()
@@ -26,5 +27,8 @@ while game_is_on:
     screen.update()
     for car in all_cars:
         car.drive()
+    if my_turt.ycor() >= 280:
+        my_turt.back_to_start()
+        score.add_point()
 
 screen.exitonclick()
